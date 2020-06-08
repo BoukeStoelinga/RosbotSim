@@ -1,9 +1,23 @@
 # RosbotSim
 Bachelor thesis project "Cooperative automated driving via the Multi ROSbot Lab setup"
+Analysis of platooning, overtaking and lane merging algorithms using [simulated husarion ROSbots ](https://github.com/husarion/rosbot_description "simulated husarion ROSbots")
+
+Simulations can be ran to test controllers
+for example: lane merging
+-gifje van lane merging
+
+Simulation can be recorded and observed through matplotlib animations
+for example: overtaking
+-gifje van lane merging
+
+Batch simulations can be ran, and recorded for parameter analysis
+
+
+
+# Instructions
 
 Find requirements in requirements.txt
 
-# Instructions
 Make sure the repository is withing your catkin workspace, and is sourced.
 
 Launching a simulation (with gui):

@@ -1,0 +1,11 @@
+- Ubuntu 16.04
+- Ros Kinetic
+- Rospy
+- Ros Astra Camera
+- Ros Astra Launch
+- Python 2.7
+- Numpy
+- Matplotlib
+- Scipy
+- Opencv2
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <node pkg="decision_py" name="second_cruise_node" type="cruise.py" output="screen" args="'/second' '0.2' ">
+  </node>
+  <node pkg="decision_py" name="third_cruise_node" type="cruise.py" output="screen" args="'/third' '0.2' ">
+  </node>
+  <node pkg="decision_py" name="fourth_cruise_node" type="cruise.py" output="screen" args="'/fourth' '0.2 '">
+  </node>
+  <node pkg="decision_py" name="fifth_cruise_node" type="cruise.py" output="screen" args="'/fifth' '0.3' ">
+  </node>
+
+
+</launch>

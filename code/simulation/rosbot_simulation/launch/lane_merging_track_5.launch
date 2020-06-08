@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+    <!-- launch the teleop node for driving the ROSbot with a keyboard-->
+    <!-- <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_twist_keyboard" output="screen" launch-prefix="xterm -e">
+      <remap from="/cmd_vel" to="/first/cmd_vel" />
+      <param name="scale_linear" value="1.0" type="double"/>
+      <param name="scale_angular" value="1.5" type="double"/>
+    </node> -->
+    <!--debug mode of gazebo is off-->
+    <arg name="debug" default="false" />
+
+    <!--gazebo GUI is on-->
+    <arg name="gui" default="true" />
+
+    <!--simulation will start paused-->
+    <arg name="pause" default="true" />
+
+    <!--find the custom world defined in the package-->
+    <arg name="world" default="$(find rosbot_simulation)/world/lane_merging_track.world" />
+
+    <!--launch the custom world-->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch" >
+        <arg name="world_name" value="$(arg world)" />
+        <arg name="debug" value="$(arg debug)" />
+        <arg name="gui" value="$(arg gui)" />
+        <arg name="paused" value="$(arg pause)" />
+        <arg name="use_sim_time" value="true" />
+
+    </include>
+
+    <!--spawn multiple ROSbots in the simulation environment-->
+    <include file="$(find rosbot_simulation)/launch/spawn_5ROS_lmt.launch"/>
+</launch>

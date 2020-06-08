@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+    <!-- launch the teleop node for driving the ROSbot with a keyboard-->
+    <!-- <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_twist_keyboard" output="screen" launch-prefix="xterm -e">
+      <remap from="/cmd_vel" to="/first/cmd_vel" />
+      <param name="scale_linear" value="1.0" type="double"/>
+      <param name="scale_angular" value="1.5" type="double"/>
+    </node> -->
+    <!--debug mode of gazebo is off-->
+    <node pkg="platooning" name="first_platoon_node" type="platooning_class.py" output="screen" args="'/first'">
+    </node>
+    <node pkg="platooning" name="second_platoon_node" type="platooning_class.py" output="screen" args="'/second'">
+    </node>
+    <node pkg="platooning" name="third_platoon_node" type="platooning_class.py" output="screen" args="'/third'">
+    </node>
+
+
+</launch>

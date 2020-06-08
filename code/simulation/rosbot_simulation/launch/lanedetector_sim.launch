@@ -1,0 +1,4 @@
+<launch>
+  <node name="image_proc_lane_node" pkg="image_proc_lane" type="image_proc_lane_node" />
+  <node name="draw_houghlines_node" pkg="draw_houghlines" type="draw_houghlines_node" />
+</launch>

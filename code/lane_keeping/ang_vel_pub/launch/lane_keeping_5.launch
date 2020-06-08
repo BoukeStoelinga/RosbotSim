@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+    <!-- launch the teleop node for driving the ROSbot with a keyboard-->
+    <!-- <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_twist_keyboard" output="screen" launch-prefix="xterm -e">
+      <remap from="/cmd_vel" to="/first/cmd_vel" />
+      <param name="scale_linear" value="1.0" type="double"/>
+      <param name="scale_angular" value="1.5" type="double"/>
+    </node> -->
+    <!--debug mode of gazebo is off-->
+
+    <!-- launch image processing first, for the first till fifth ROSbot -->
+    <node pkg="py_img_proc" name="first_ang_error_node" type="py_img_proc_node.py" output="screen" args="'/first'">
+    </node>
+    <node pkg="py_img_proc" name="second_ang_error_node" type="py_img_proc_node.py" output="screen" args="'/second'">
+    </node>
+    <node pkg="py_img_proc" name="third_ang_error_node" type="py_img_proc_node.py" output="screen" args="'/third'">
+    </node>
+    <node pkg="py_img_proc" name="fourth_ang_error_node" type="py_img_proc_node.py" output="screen" args="'/fourth'">
+    </node>
+    <node pkg="py_img_proc" name="fifth_ang_error_node" type="py_img_proc_node.py" output="screen" args="'/fifth'">
+    </node>
+    
+
+    <!-- launch the angular velocity publisher for the first till fitfh ROSbot -->
+    <node pkg="ang_vel_pub" name="first_ang_vel_pub" type="ang_vel_pub_node.py" output="screen" args="'/first'">
+    </node>
+    <node pkg="ang_vel_pub" name="second_ang_vel_pub" type="ang_vel_pub_node.py" output="screen" args="'/second'">
+    </node>
+    <node pkg="ang_vel_pub" name="third_ang_vel_pub" type="ang_vel_pub_node.py" output="screen" args="'/third'">
+    </node>
+    <node pkg="ang_vel_pub" name="fourth_ang_vel_pub" type="ang_vel_pub_node.py" output="screen" args="'/fourth'">
+    </node>
+    <node pkg="ang_vel_pub" name="fifth_ang_vel_pub" type="ang_vel_pub_node.py" output="screen" args="'/fifth'">
+    </node>
+
+<!-- they need to be launched in this specific order, otherwise the script will start off with errors and later fix itself -->
+
+
+
+</launch>

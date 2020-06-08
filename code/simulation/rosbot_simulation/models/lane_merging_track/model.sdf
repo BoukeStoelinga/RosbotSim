@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+<model name="lane_merging_track">
+<!-- ground plane cannot move, so object is static-->
+  <static>true</static>
+    <link name="link">
+<!--the collision object of the custom ground plane-->
+      <collision name="collision">
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+    	    <!--define the collision size of the custom ground plane-->
+            <size>20 2</size>
+          </plane>
+        </geometry>
+        <surface>
+          <friction>
+            <ode>
+              <mu>100</mu>
+              <mu2>50</mu2>
+            </ode>
+          </friction>
+        </surface>
+      </collision>
+<!--the visual object of the custom ground plane-->
+      <visual name="visual">
+        <cast_shadows>false</cast_shadows>
+        <geometry>
+          <plane>
+            <normal>0 0 1</normal>
+	    <!--define the visual size of the custom ground plane-->
+            <size>20 2</size>
+          </plane>
+        </geometry>
+	<!--define the material which the custom ground plane consists of-->
+        <material>
+          <script>
+            <uri>model://rosbot_simulation/models/lane_merging_track/materials/scripts</uri>
+            <uri>model://rosbot_simulation/models/lane_merging_track/materials/textures</uri>
+            <name>lane_merging_track/Image</name>
+          </script>
+        </material>
+      </visual>
+    </link>
+  </model>
+</sdf>

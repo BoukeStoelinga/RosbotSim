@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+    <!-- launch the teleop node for driving the ROSbot with a keyboard-->
+    <!-- <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_twist_keyboard" output="screen" launch-prefix="xterm -e">
+      <remap from="/cmd_vel" to="/first/cmd_vel" />
+      <param name="scale_linear" value="1.0" type="double"/>
+      <param name="scale_angular" value="1.5" type="double"/>
+    </node> -->
+    <!--debug mode of gazebo is off-->
+    <arg name="runID" />
+
+    <node pkg="scenario_measurements" name="first_recorder" type="record_data_lane_merging.py" output="screen" args="'rosbot_f' $(arg runID)">
+    </node>
+    <node pkg="scenario_measurements" name="second_recorder" type="record_data_lane_merging.py" output="screen" args="'rosbot_s' $(arg runID)">
+    </node>
+    <node pkg="scenario_measurements" name="third_recorder" type="record_data_lane_merging.py" output="screen" args="'rosbot_t' $(arg runID)">
+    </node>
+    <node pkg="scenario_measurements" name="fourth_recorder" type="record_data_lane_merging.py" output="screen" args="'rosbot_fo' $(arg runID)">
+    </node>
+    <node pkg="scenario_measurements" name="fifth_recorder" type="record_data_lane_merging.py" output="screen" args="'rosbot_fi' $(arg runID)">
+    </node>
+
+
+
+
+</launch>

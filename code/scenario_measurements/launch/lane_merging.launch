@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+    <arg name="runID" />
+    <!-- launch the teleop node for driving the ROSbot with a keyboard-->
+    <!-- <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_twist_keyboard" output="screen" launch-prefix="xterm -e">
+      <remap from="/cmd_vel" to="/first/cmd_vel" />
+      <param name="scale_linear" value="1.0" type="double"/>
+      <param name="scale_angular" value="1.5" type="double"/>
+    </node> -->
+    <!--debug mode of gazebo is off-->
+    <!--debug mode of gazebo is off-->
+    <arg name="debug" default="false" />
+
+    <!--gazebo GUI is on-->
+    <arg name="gui" default="true" />
+
+    <!--simulation will start paused-->
+    <arg name="pause" default="false" />
+
+    <!--find the custom world defined in the package-->
+    <arg name="world" default="$(find rosbot_simulation)/world/lane_merging_track.world" />
+
+    <!-- log measurements -->
+    <arg name="record" value="false"/>
+
+    <!--launch the custom world-->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch" >
+        <arg name="world_name" value="$(arg world)" />
+        <arg name="debug" value="$(arg debug)" />
+        <arg name="gui" value="$(arg gui)" />
+        <arg name="paused" value="$(arg pause)" />
+        <arg name="use_sim_time" value="true" />
+        <arg name="recording" value="$(arg record)" />
+
+    </include>
+
+    <!--spawn multiple ROSbots in the simulation environment-->
+    <node pkg="timed_roslaunch" type="timed_roslaunch.sh" args="6 lane_merging lane_merge.launch" name="timed_roslaunch_spawner" output="screen" />
+    <!-- launch everything for the scenario -->
+    <node pkg="timed_roslaunch" type="timed_roslaunch.sh" args="20 lane_merging lane_merge_nodes.launch" name="timed_roslaunch_lane_merging" output="screen" />
+    <node pkg="timed_roslaunch" type="timed_roslaunch.sh" args="20 py_img_proc angular_error.launch" name="timed_roslaunch_py_img_proc" output="screen" />
+    <node pkg="timed_roslaunch" type="timed_roslaunch.sh" args="20 ang_vel_pub ang_vel_pub.launch" name="timed_roslaunch_ang_vel_pub" output="screen" />
+    <node pkg="timed_roslaunch" type="timed_roslaunch.sh" args="20 lane_switching_safety lane_switching_safety.launch" name="timed_roslaunch_platooning" output="screen" />
+    <node pkg="timed_roslaunch" type="timed_roslaunch.sh" args="20 rgbd colour_detect.launch" name="timed_roslaunch_rgbd" output="screen"/>
+    <!-- <node pkg="timed_roslaunch" type="timed_roslaunch.sh" args="20 scenario_measurements record_lane_merging.launch runID:=$(arg runID)" name="timed_roslaunch_recorder" output="screen" /> -->
+    <node pkg="timed_roslaunch" type="timed_roslaunch.sh" args="25 decision_py decision_5_py.launch" name="timed_roslaunch_decision_py" output="screen" />
+
+
+<!--    <node pkg="scenario_measurements" name="Recorder" type="record_data.py" output="screen" args="'2'">
+</node> -->
+
+
+
+
+</launch>

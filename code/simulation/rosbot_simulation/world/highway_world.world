@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+    <world name="default">
+	<!--place the sun in the world as light source -->
+        <include>
+            <uri>model://sun</uri>
+        </include>
+	<!--place the the track as ground plane in the world -->
+        <include>
+            <uri>model://rosbot_simulation/models/track_1</uri>
+        </include>
+        <include>
+            <uri>model://rosbot_simulation/models/tram</uri>
+            <pose>-0.4 0.63 0.075 0 0 0</pose>
+            <static>false</static>
+        </include>
+    </world>
+</sdf>

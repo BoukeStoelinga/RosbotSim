@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+    <!-- launch the teleop node for driving the ROSbot with a keyboard-->
+    <!-- <node pkg="teleop_twist_keyboard" type="teleop_twist_keyboard.py" name="teleop_twist_keyboard" output="screen" launch-prefix="xterm -e">
+      <remap from="/cmd_vel" to="/first/cmd_vel" />
+      <param name="scale_linear" value="1.0" type="double"/>
+      <param name="scale_angular" value="1.5" type="double"/>
+    </node> -->
+    <!--debug mode of gazebo is off-->
+    <node pkg="lane_switching_safety" name="first_lane_switching_safety_node" type="lane_switching_safety_node.py" output="screen" args="'/first'">
+    </node>
+    <node pkg="lane_switching_safety" name="second_lane_switching_safety_node" type="lane_switching_safety_node.py" output="screen" args="'/second'">
+    </node>
+    <node pkg="lane_switching_safety" name="third_lane_switching_safety_node" type="lane_switching_safety_node.py" output="screen" args="'/third'">
+    </node>
+    <node pkg="lane_switching_safety" name="fourth_lane_switching_safety_node" type="lane_switching_safety_node.py" output="screen" args="'/fourth'">
+    </node>
+    <node pkg="lane_switching_safety" name="fifth_lane_switching_safety_node" type="lane_switching_safety_node.py" output="screen" args="'/fifth'">
+    </node>
+    
+
+
+
+</launch>

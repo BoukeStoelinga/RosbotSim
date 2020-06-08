@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<launch>
+
+  <param name="robot_description" command="$(find xacro)/xacro.py --inorder '$(find rosbot_description)/urdf/rosbot.xacro' robot_namespace:=/first"/>
+  <param name="second_robot_description" command="$(find xacro)/xacro.py --inorder '$(find rosbot_description)/urdf/rosbot.xacro' robot_namespace:=/second"/>
+  <param name="third_robot_description" command="$(find xacro)/xacro.py --inorder '$(find rosbot_description)/urdf/rosbot.xacro' robot_namespace:=/third"/>
+  <node name="rosbot_spawn_first" pkg="gazebo_ros" type="spawn_model" output="log" args="-urdf -param robot_description -model rosbot_f -x 3 -Y 0 -z 0.044 -namespace /first">
+  </node>
+  <node name="rosbot_spawn_second" pkg="gazebo_ros" type="spawn_model" output="log" args="-urdf -param second_robot_description -model rosbot_s -x 2 -Y 0 -z 0.044 -namespace /second">
+  </node>
+  <node name="rosbot_spawn_third" pkg="gazebo_ros" type="spawn_model" output="log" args="-urdf -param third_robot_description -model rosbot_t -x 1 -Y 0 -z 0.044 -namespace /third">
+  </node>
+
+  <group ns="/first">
+    <rosparam command="load" file="$(find joint_state_controller)/joint_state_controller.yaml" />
+    <node name="first_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/first" args=" --namespace=/first/joint_state_controller" />
+    <node name="first_robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+      <param name="tf_prefix" value="first"/>
+    </node>
+    <node pkg="tf" type="static_transform_publisher" name="first_odom" args="0 0 0 0 0 0 1 map first/odom 100" />
+  </group>
+
+  <group ns="/second">
+    <rosparam command="load" file="$(find joint_state_controller)/joint_state_controller.yaml" />
+    <node name="second_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/second" args=" --namespace=/second/joint_state_controller" />
+    <node name="second_robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+      <remap from="robot_description" to="second_robot_description" />
+      <param name="tf_prefix" value="second"/>
+    </node>
+    <node pkg="tf" type="static_transform_publisher" name="second_odom" args="0 0 0 0 0 0 1 map second/odom 100" />
+  </group>
+
+  <group ns="/third">
+    <rosparam command="load" file="$(find joint_state_controller)/joint_state_controller.yaml" />
+    <node name="third_controller_spawner" pkg="controller_manager" type="spawner" respawn="false" output="screen" ns="/third" args=" --namespace=/third/joint_state_controller" />
+    <node name="third_robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
+      <remap from="robot_description" to="third_robot_description" />
+      <param name="tf_prefix" value="third"/>
+    </node>
+    <node pkg="tf" type="static_transform_publisher" name="third_odom" args="0 0 0 0 0 0 1 map third/odom 100" />
+  </group>
+
+</launch>

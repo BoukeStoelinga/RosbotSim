@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <!-- LAUNCH LANE KEEPING -->
+  <arg name="max_vel_first" default = "0.3" />
+  <arg name="max_vel_second" default = "0.3" />
+  <arg name="max_vel_third" default = "0.3" />
+  <arg name="max_vel_fourth" default = "0.3" />
+  <arg name="max_vel_fifth" default = "0.3" />
+  <arg name="filename" default = "0" />
+  <include file="$(find ang_vel_pub)/launch/lane_keeping_5.launch"/>
+  <!-- <node pkg="timed_roslaunch" type="timed_roslaunch.sh" args="12 ang_vel_pub lane_keeping_5.launch" name="timed_roslaunch_lane_keeping_5" output="screen" /> -->
+
+  <!-- LAUNCH LANE SWITCHING SAFETY -->
+  <include file="$(find lane_switching_safety)/launch/lane_switching_safety.launch"/>
+
+  <!-- <node pkg="overtaking" name="overtaking_node" type="overtaking_node.py" output="screen" args="'/first' $(arg max_vel_first)"> -->
+  <!-- </node> -->
+
+  <node pkg="platooning" name="second_platoon_node" type="platooning_class.py" output="screen" args="'/second' $(arg max_vel_second) "> </node>
+  <node pkg="platooning" name="third_platoon_node" type="platooning_class.py" output="screen" args="'/third' $(arg max_vel_third) "> </node>
+  <node pkg="platooning" name="fourth_platoon_node" type="platooning_class.py" output="screen" args="'/fourth' $(arg max_vel_fourth) "> </node>
+  <node pkg="platooning" name="fifth_platoon_node" type="platooning_class.py" output="screen" args="'/fifth' $(arg max_vel_fifth) "> </node>
+  <!-- <include file="$(find decision_py)/launch/decision_5_py.launch"/> -->
+  <!-- <node pkg="timed_roslaunch" type="timed_roslaunch.sh" args="5 scenario_measurements record_scenario.launch filename:=$(arg filename)" name="timed_roslaunch_recorder" output="screen" />
+  <node pkg="timed_roslaunch" type="timed_roslaunch.sh" args="8 decision_py decision_5_py.launch" name="timed_roslaunch_decision" output="screen" /> -->
+
+
+
+
+</launch>

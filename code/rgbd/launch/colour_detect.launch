@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+  <node pkg="rgbd" name="first_rbgd_node" type="rgbd_colour_node.py" output="screen" args="'/first'">
+  </node>
+  <node pkg="rgbd" name="second_rbgd_node" type="rgbd_colour_node.py" output="screen" args="'/second'">
+  </node>
+  <node pkg="rgbd" name="third_rbgd_node" type="rgbd_colour_node.py" output="screen" args="'/third'">
+  </node>
+  <node pkg="rgbd" name="fourth_rbgd_node" type="rgbd_colour_node.py" output="screen" args="'/fourth'">
+  </node>
+  <node pkg="rgbd" name="fifth_rbgd_node" type="rgbd_colour_node.py" output="screen" args="'/fifth'">
+  </node>
+
+
+
+</launch>

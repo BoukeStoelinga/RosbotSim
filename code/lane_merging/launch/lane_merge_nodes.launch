@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<launch>
+
+
+  <node pkg="lane_merging" name="first_lane_merging_node" type="lane_merging_adapt_vel_node.py" output="screen" args="'/first'">
+  </node>
+  <node pkg="lane_merging" name="second_lane_merging_node" type="lane_merging_adapt_vel_node.py" output="screen" args="'/second'">
+  </node>
+  <node pkg="lane_merging" name="third_lane_merging_node" type="lane_merging_adapt_vel_node.py" output="screen" args="'/third'">
+  </node>
+  <node pkg="lane_merging" name="fourth_lane_merging_node" type="lane_merging_adapt_vel_node.py" output="screen" args="'/fourth'">
+  </node>
+  <node pkg="lane_merging" name="fifth_lane_merging_node" type="lane_merging_adapt_vel_node.py" output="screen" args="'/fifth'">
+  </node>
+
+</launch>

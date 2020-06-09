@@ -3,12 +3,12 @@ Bachelor thesis project "Cooperative automated driving via the Multi ROSbot Lab 
 Analysis of platooning, overtaking and lane merging algorithms using [simulated husarion ROSbots ](https://github.com/husarion/rosbot_description "simulated husarion ROSbots")
 
 Simulations can be ran to test controllers
-for example: lane merging
-![lane merging](code/lane_merging_gif.gif)
+for example:
+![lane merging](code/lane_merging_sim.gif)
 
 Simulation can be recorded and observed through matplotlib animations
-for example: overtaking
--gifje van lane merging
+for example:
+![lane merging matplotlib](code/lane_merging_gif.gif)
 
 Batch simulations can be ran, and recorded for parameter analysis
 

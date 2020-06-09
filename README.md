@@ -4,7 +4,7 @@ Analysis of platooning, overtaking and lane merging algorithms using [simulated 
 
 Simulations can be ran to test controllers
 for example: lane merging
--gifje van lane merging
+![lane merging](code/lane_merging_gif.gif)
 
 Simulation can be recorded and observed through matplotlib animations
 for example: overtaking
